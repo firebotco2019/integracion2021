@@ -1,13 +1,13 @@
 version: "3.3"
 
 services:
-  mysqlcloud:
-    container_name: mysqlcloud
+  mysqld:
+    container_name: mysqld
     restart: always
     image: mariadb:10.2.36
     build:
       context: ./
-      dockerfile: dockerDB
+      dockerfile: DockerDB
     command:
       - "mysqld"
       - "--innodb-file-per-table=1"
@@ -27,11 +27,38 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
+    volumes:
+      - ./prj/datamodel:/datamodel:rw
     expose:
       - "3306"
     networks:
       cloud:
         ipv4_address: 172.16.200.2
+
+  cloud:
+    image: "node:15.14.0"
+    user: root
+    container_name: cloud
+    restart: always
+    working_dir: /home/node/app
+    build:
+      context: ./
+      dockerfile: DockerNode
+    environment:
+      - "TZ=America/Bogota"
+      - "NODE_ENV=production"
+    volumes:
+      - ./prj:/home/node/app:rw
+    expose:
+      - "8080"
+    #ports:
+    #  - "80:80"
+    depends_on:
+      - mysqld
+    command: "pm2-runtime app/index.js --watch"
+    networks:
+      cloud:
+        ipv4_address: 172.16.200.3
 
 networks:
   cloud:
