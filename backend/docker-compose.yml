@@ -10,3 +10,4 @@ services:
       MONGO_INITDB_DATABASE: integracion
     ports:
       - "27017:27017"
+# Ejecutar en el Terminal: docker-compose up -d
