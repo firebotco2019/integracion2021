@@ -1,0 +1,12 @@
+version: "3"
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: .integracion.
+      MONGO_INITDB_DATABASE: integracion
+    ports:
+      - "27017:27017"
