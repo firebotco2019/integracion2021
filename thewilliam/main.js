@@ -1,11 +1,12 @@
+//obtener el nodo del canvas y el contexto de dibujo
 const canvas = document.getElementById("CanvasMatrix");
 const ctx = canvas.getContext('2d');
 
-//set the width and height of the canvas
+//establecer el ancho y altura del canvas
 const w = canvas.width = document.body.offsetWidth;
 const h = canvas.height = document.body.offsetHeight;
 
-//draw a black rectangle of width and height same as that of the canvas
+//dibuja un rectángulo negro de ancho y alto igual que el del canvas
 ctx.fillStyle = '#000';
 ctx.fillRect (0, 0, w, h);
 
@@ -13,31 +14,31 @@ const cols = Math.floor(w / 20) + 1;
 const ypos = Array(cols).fill(0);
 
 function matrix () {
-    //draw a semitransparent black rectangle on top previous drawing
+    //dibujar un rectángulo negro semitransparente en la parte superior del dibujo anterior
     ctx.fillStyle = '#0001';
     ctx.fillRect(0, 0, w, h,);
 
-    //set color to green and font to 15pt monospace in the drawing context
+    //establecer el color en verde y la fuente en monospace de 15 puntos en el contexto del dibujo
     ctx.fillStyle = '#0f0';
     ctx.font = '20pt monospace';
 
-    //for each column put a random character at the end
+    //para cada columna ponga un carácter aleatorio al final
     ypos.forEach((y, ind) => {
 
-        //generate a random character
+        //generar un caractér aleatorio
         const text = String.fromCharCode(Math.random() * 122);
         
-        // x coordinate of the column, y coordinate is already given
+        // X coordenada de la columna, la coordenada Y ya está dada
         const x = ind * 20;
-        //render the character at (x, y)
+        //renderizar el carácter en (x, y)
         ctx.fillText(text, x, y);
 
-        //randomly resert the end of the column if it's at least 100px high
+        //restablece aleatoriamente el final de la columna si tiene al menos 100 puntos de altura
         if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
-        //otherwise just move the y coordinate for the column 20pc down
+        //de lo contrario, simplemente mueva la coordenada y de la columna 20 puntos hacia abajo
         else ypos[ind] = y + 20;
     });
 }
 
-//render the animation at 20 fps
+//renderizar la animación a 20 fps
 setInterval(matrix, 50);
