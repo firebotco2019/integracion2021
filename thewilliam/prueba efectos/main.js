@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 
 //establecer el ancho y altura del canvas
 const w = canvas.width = document.body.offsetWidth;
-const h = canvas.height = document.body.offsetHeight;
+const h = canvas.height = screen.height -124;
 
 //dibuja un rectángulo negro de ancho y alto igual que el del canvas
 ctx.fillStyle = '#000';
@@ -27,7 +27,7 @@ function matrix () {
 
         //generar un caractér aleatorio
         const text = String.fromCharCode(Math.random() * 122);
-        
+
         // X coordenada de la columna, la coordenada Y ya está dada
         const x = ind * 20;
         //renderizar el carácter en (x, y)
