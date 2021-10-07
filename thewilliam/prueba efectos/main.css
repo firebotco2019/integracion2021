@@ -11,3 +11,9 @@ body {
   position: fixed;
   overflow: hidden;
 }
+
+.btntop {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}

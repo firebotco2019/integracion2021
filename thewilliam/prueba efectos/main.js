@@ -41,5 +41,16 @@ function matrix () {
     });
 }
 
+function openFullscreen(elemnt) {
+    var elem = document.getElementById(elemnt);
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+  }
+
 //renderizar la animación a 20 fps
 setInterval(matrix, 50);
