@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 
 //establecer el ancho y altura del canvas
 const w = canvas.width = document.body.offsetWidth;
-const h = canvas.height = screen.height -124;
+const h = canvas.height = screen.height;
 
 
 //dibuja un rectángulo negro de ancho y alto igual que el del canvas
