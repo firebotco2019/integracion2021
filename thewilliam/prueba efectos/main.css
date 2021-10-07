@@ -3,8 +3,7 @@ body {
   padding: 0px;
   margin: 0px;
 }
-#canvasmatrix,
-.canvasmatrix {
+#canvasmatrix {
   width: 100vw;
   height: 100vh;
   min-height: 100vh;

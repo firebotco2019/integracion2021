@@ -6,6 +6,7 @@ const ctx = canvas.getContext('2d');
 const w = canvas.width = document.body.offsetWidth;
 const h = canvas.height = screen.height -124;
 
+
 //dibuja un rectángulo negro de ancho y alto igual que el del canvas
 ctx.fillStyle = '#000';
 ctx.fillRect (0, 0, w, h);
